@@ -1,0 +1,1307 @@
+{
+  "main": {
+    "id": "xh-main-split",
+    "type": "split",
+    "children": [
+      {
+        "id": "xh-main-tabs",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "xh-workbench-leaf",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "00-Wiki入口/00-Wiki入口.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "00-Wiki入口"
+            }
+          },
+          {
+            "id": "746127c822096d5c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "30-复盘沉淀/日记/2026-12-11.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-12-11"
+            }
+          },
+          {
+            "id": "e53bcb71d664b5f4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "30-复盘沉淀/日记/2026-12-18.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-12-18"
+            }
+          },
+          {
+            "id": "f8384eca79b1a622",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "30-复盘沉淀/日记/2026-12-16.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-12-16"
+            }
+          },
+          {
+            "id": "248b115ac731d70f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "30-复盘沉淀/日记/2026-12-25.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-12-25"
+            }
+          },
+          {
+            "id": "5bdebefb0fb11f2c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "30-复盘沉淀/日记/2026-12-25.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-12-25"
+            }
+          },
+          {
+            "id": "ae5a6ee84a75b333",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "微信公众号文章/知识库设计参考.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "知识库设计参考"
+            }
+          },
+          {
+            "id": "2081702cd3b603ec",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "00-Wiki入口/00-Wiki入口.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "00-Wiki入口"
+            }
+          },
+          {
+            "id": "bb16010322912683",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "30-复盘沉淀/日记/2026-08-01.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-08-01"
+            }
+          },
+          {
+            "id": "32c540d317bd577b",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "关系图谱"
+            }
+          },
+          {
+            "id": "af459b417ebd5ce4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "20-工作流模板/项目/知识库入口优化.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "知识库入口优化"
+            }
+          },
+          {
+            "id": "79b7cf7168090b49",
+            "type": "leaf",
+            "state": {
+              "type": "xinghai-workbench-view",
+              "state": {},
+              "icon": "orbit",
+              "title": "星海知枢"
+            }
+          },
+          {
+            "id": "b8b74c1c5560838c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "20-工作流模板/项目/AI提示词体系.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "AI提示词体系"
+            }
+          },
+          {
+            "id": "9a8994c975a7a89c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "10-主题知识/原子化笔记.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "原子化笔记"
+            }
+          },
+          {
+            "id": "7a899dde8a7870dc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "10-主题知识/知识管理方法.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "知识管理方法"
+            }
+          },
+          {
+            "id": "68245201c38ed2cb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "30-复盘沉淀/日记/2026-08-02.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-08-02"
+            }
+          },
+          {
+            "id": "8095886009976569",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "30-复盘沉淀/日记/2026-08-01.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-08-01"
+            }
+          },
+          {
+            "id": "2dcd7fd407f95197",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "30-复盘沉淀/日记/2026-08-02.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-08-02"
+            }
+          },
+          {
+            "id": "da4673c005d74df4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "10-主题知识/原子化笔记.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "原子化笔记"
+            }
+          },
+          {
+            "id": "b7d49ca3fff3a49b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "20-工作流模板/任务/2026-08-01-204522-验收-分类任务记录.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-08-01-204522-验收-分类任务记录"
+            }
+          },
+          {
+            "id": "62beeaac282aede2",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#知识管理 OR \"知识管理\"",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "8985a08e9ec15cca",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#工作台 OR \"工作台\"",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "31855b4c8d81b411",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#复盘 OR \"复盘\"",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "79c7a0daadf70a1a",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#学习 OR \"学习\"",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "c574a2a75ddb2c1c",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#阅读 OR \"阅读\"",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "2b2c541efcd8dc04",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#项目 OR \"项目\"",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "9e3c9114c3901047",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#复盘",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "cce99b601a33b0d9",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#项目",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "fcd94d413f4b58b7",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#知识管理",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "429ee403a0257ddb",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#工作台",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "6286c68b7ccff2aa",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "10-主题知识/原子化笔记.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "原子化笔记"
+            }
+          },
+          {
+            "id": "ba11b2bec1d0364a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "90-资料收件箱/收件箱处理规则.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "收件箱处理规则"
+            }
+          },
+          {
+            "id": "5d453e3a2024c684",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "30-复盘沉淀/周复盘/2026-W31-周复盘.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-W31-周复盘"
+            }
+          },
+          {
+            "id": "bf795f553846053b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "90-资料收件箱/2026-08-01-214151-灵感验收-建立跨主题索引.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-08-01-214151-灵感验收-建立跨主题索引"
+            }
+          },
+          {
+            "id": "c393cc1d23d8e27c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "90-资料收件箱/收件箱处理规则.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "收件箱处理规则"
+            }
+          },
+          {
+            "id": "09cc732dda927d9d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "20-工作流模板/项目/AI提示词体系.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "AI提示词体系"
+            }
+          },
+          {
+            "id": "23f0544edacd9ff6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "20-工作流模板/项目/AI提示词体系.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "AI提示词体系"
+            }
+          },
+          {
+            "id": "ddf9a94b1ac88528",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "00-Wiki入口/00-Wiki入口.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "00-Wiki入口"
+            }
+          },
+          {
+            "id": "7ea4e473cbb60ecd",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#知识管理",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "fa40fcd084ef0211",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#工作台",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "72b42fc4d78a9bfe",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#阅读",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "1a3786d8e90554b7",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#项目",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "7612d3dd1895575d",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#复盘",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "bb5138635890bab9",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#项目",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "7fbd119415d4b5aa",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "10-主题知识/原子化笔记.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "原子化笔记"
+            }
+          },
+          {
+            "id": "3cc74dae52ede671",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "10-主题知识/原子化笔记.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "原子化笔记"
+            }
+          },
+          {
+            "id": "1310bf17b28f5443",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "微信公众号文章/2026-08-01-214301-文章验收-知识库关系设计.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-08-01-214301-文章验收-知识库关系设计"
+            }
+          },
+          {
+            "id": "a2bbe969b5b0b9a3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "20-工作流模板/项目/复盘沉淀流程.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "复盘沉淀流程"
+            }
+          },
+          {
+            "id": "8b8cd21944859809",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "20-工作流模板/任务/2026-08-01-204522-验收-分类任务记录.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-08-01-204522-验收-分类任务记录"
+            }
+          },
+          {
+            "id": "db66e6d51e22a695",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "20-工作流模板/项目/AI提示词体系.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "AI提示词体系"
+            }
+          },
+          {
+            "id": "61c1663568aec0b8",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#知识管理",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "b0e84592d2cd479b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "10-主题知识/知识管理方法.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "知识管理方法"
+            }
+          },
+          {
+            "id": "6b04e280f5e0a7e7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "30-复盘沉淀/日记/2026-08-01.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-08-01"
+            }
+          },
+          {
+            "id": "850c7372e3019fa9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "30-复盘沉淀/日记/2026-08-01.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-08-01"
+            }
+          },
+          {
+            "id": "6f032acee3247d1c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "outputs/星海知枢功能验收.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "星海知枢功能验收"
+            }
+          },
+          {
+            "id": "9aa2cf84556d6efa",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Clippings/渐进式总结.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "渐进式总结"
+            }
+          },
+          {
+            "id": "f75b115717348c06",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "微信公众号文章/知识库设计参考.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "知识库设计参考"
+            }
+          },
+          {
+            "id": "ad03132537c80f2a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "90-资料收件箱/收件箱处理规则.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "收件箱处理规则"
+            }
+          },
+          {
+            "id": "d8e950da09e5fbda",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "80-系统资源/星海知枢使用说明.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "星海知枢使用说明"
+            }
+          },
+          {
+            "id": "86bd5bbed7ec34d9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "30-复盘沉淀/日记/2026-08-01.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-08-01"
+            }
+          },
+          {
+            "id": "417fc68686de34a6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "20-工作流模板/任务/2026-08-01-204522-验收-分类任务记录.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-08-01-204522-验收-分类任务记录"
+            }
+          },
+          {
+            "id": "a425ac75896ac01b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "10-主题知识/原子化笔记.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "原子化笔记"
+            }
+          },
+          {
+            "id": "5a64a95622d622cf",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "00-Wiki入口/00-Wiki入口.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "00-Wiki入口"
+            }
+          },
+          {
+            "id": "81f78aca4bfa8c1d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "30-复盘沉淀/日记/2026-08-01.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-08-01"
+            }
+          },
+          {
+            "id": "13a43dd0f3b5f276",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "30-复盘沉淀/周复盘/2026-W31-周复盘.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-W31-周复盘"
+            }
+          },
+          {
+            "id": "1628b20329131f62",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "30-复盘沉淀/周复盘/2026-W31-周复盘.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-W31-周复盘"
+            }
+          },
+          {
+            "id": "c45d4474cf58de05",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "20-工作流模板/项目/AI提示词体系.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "AI提示词体系"
+            }
+          },
+          {
+            "id": "a12801a494acf448",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "00-Wiki入口/00-Wiki入口.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "00-Wiki入口"
+            }
+          },
+          {
+            "id": "7ebefa71f274f791",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "00-Wiki入口/00-Wiki入口.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "00-Wiki入口"
+            }
+          },
+          {
+            "id": "becb28bad8a4fe2b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "20-工作流模板/任务/2026-08-01-213921-映射验收-整理流程.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-08-01-213921-映射验收-整理流程"
+            }
+          },
+          {
+            "id": "a54fab2503bc627c",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#整理 OR \"整理\"",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "b51963a3d492d804",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "关系图谱"
+            }
+          },
+          {
+            "id": "a39c48ba9aecf46e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "outputs/星海知枢功能验收.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "星海知枢功能验收"
+            }
+          },
+          {
+            "id": "a4e283d937425049",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "未命名 1.canvas",
+                "viewState": {
+                  "x": 0,
+                  "y": 0,
+                  "zoom": 0
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "未命名 1"
+            }
+          }
+        ],
+        "currentTab": 11
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "xh-left-split",
+    "type": "split",
+    "children": [
+      {
+        "id": "xh-left-tabs",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "xh-files-leaf",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "xh-search-leaf",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "byModifiedTime"
+              },
+              "icon": "search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "802adf39546ac52e",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 614.6354370117188
+  },
+  "right": {
+    "id": "xh-right-split",
+    "type": "split",
+    "children": [
+      {
+        "id": "xh-right-tabs",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f178cc84466eafa9",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "00-Wiki入口/00-Wiki入口.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "反向链接"
+            }
+          },
+          {
+            "id": "903026349e73e559",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "00-Wiki入口/00-Wiki入口.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "出链"
+            }
+          },
+          {
+            "id": "0c8ed29e88bc0dd2",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "e0e794254f42f2e1",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "添加笔记属性"
+            }
+          },
+          {
+            "id": "16320c6d14ec9d95",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "00-Wiki入口/00-Wiki入口.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "大纲"
+            }
+          },
+          {
+            "id": "d8fd6732ef0cb522",
+            "type": "leaf",
+            "state": {
+              "type": "xinghai-workbench-sidebar",
+              "state": {},
+              "icon": "calendar-range",
+              "title": "星海信息栏"
+            }
+          }
+        ],
+        "currentTab": 5
+      }
+    ],
+    "direction": "horizontal",
+    "width": 258
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "xinghai-workbench:返回星海知枢主页": false,
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "workspaces:管理工作区布局": false,
+      "bases:新建数据库": false
+    }
+  },
+  "active": "79b7cf7168090b49",
+  "lastOpenFiles": [
+    "未命名 1.canvas",
+    "未命名 2.canvas",
+    "未命名.canvas",
+    "10-主题知识/知识管理方法.md",
+    "00-Wiki入口/00-Wiki入口.md",
+    "20-工作流模板/任务/2026-08-02-115608-2222.md",
+    "30-复盘沉淀/日记/2026-08-01.md",
+    "30-复盘沉淀/日记/2026-08-02.md",
+    "10-主题知识/原子化笔记.md",
+    "20-工作流模板/任务/2026-08-01-204522-验收-分类任务记录.md",
+    "20-工作流模板/项目/AI提示词体系.md",
+    "90-资料收件箱/收件箱处理规则.md",
+    "90-资料收件箱/2026-08-01-214151-灵感验收-建立跨主题索引.md",
+    "30-复盘沉淀/周复盘/2026-W31-周复盘.md",
+    "QA-动态目录-D",
+    "QA-动态目录-C",
+    "QA-动态目录-B",
+    "QA-动态目录-A",
+    "微信公众号文章/2026-08-01-214301-文章验收-知识库关系设计.md",
+    "20-工作流模板/任务/2026-08-01-213921-映射验收-整理流程.md",
+    "outputs/星海知枢功能验收.md",
+    "Clippings/渐进式总结.md",
+    "微信公众号文章/知识库设计参考.md",
+    "80-系统资源/星海知枢使用说明.md",
+    "20-工作流模板/任务",
+    "30-复盘沉淀/日记/2026-08-31.md",
+    "20-工作流模板/项目/知识库入口优化.md",
+    "30-复盘沉淀/日记/2026-12-25.md",
+    "30-复盘沉淀/日记/2026-12-16.md",
+    "30-复盘沉淀/日记/2026-12-18.md",
+    "30-复盘沉淀/日记/2026-12-11.md",
+    "30-复盘沉淀/日记/2026-12-09.md",
+    "20-工作流模板/AI提示词/四步协作式简历优化与面试预演提示词.md"
+  ]
+}

@@ -1,0 +1,26 @@
+filters:
+  and:
+    - file.ext == "md"
+    - not:
+        - file.inFolder("Clippings")
+        - file.inFolder("80-系统资源/模板")
+        - file.inFolder("80-系统资源/系统维护/项目记忆")
+        - file.path == "00-Wiki入口/00-星海工作台.md"
+properties:
+  file.name:
+    displayName: 笔记
+  file.folder:
+    displayName: 位置
+  file.mtime:
+    displayName: 最近修改
+views:
+  - type: list
+    name: 最近笔记
+    limit: 5
+    order:
+      - file.name
+      - file.folder
+      - file.mtime
+    sort:
+      - property: file.mtime
+        direction: DESC

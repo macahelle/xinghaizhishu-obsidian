@@ -1,0 +1,31 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# 忽略特定文件
+Icon?
+._*
+
+# 目录文件
+.Spotlight-V100
+.Trashes
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Node
+node_modules/
+npm-debug.log
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+
+# 日志
+*.log
