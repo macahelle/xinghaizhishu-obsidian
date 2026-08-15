@@ -1,227 +1,85 @@
 {
   "main": {
-    "id": "6a1c9e2f4b7d8053",
+    "id": "xh-main-split",
     "type": "split",
-    "children": [
-      {
-        "id": "c49a52d8f0e13b67",
-        "type": "tabs",
-        "dimension": 40,
-        "children": [
-          {
-            "id": "8d63f0a7c29e541b",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "知识星图"
-            }
-          }
-        ],
-        "currentTab": 0
-      },
-      {
-        "id": "91b4e8c3d6a0257f",
-        "type": "tabs",
-        "dimension": 60,
-        "children": [
-          {
-            "id": "e52d7a90b3c6481f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "00-Wiki入口/00-星海工作台.md",
-                "mode": "preview",
-                "source": false
-              },
-              "icon": "lucide-layout-dashboard",
-              "title": "星海工作台"
-            }
-          }
-        ],
-        "currentTab": 0
-      }
-    ],
-    "direction": "horizontal"
+    "children": [{
+      "id": "xh-main-tabs",
+      "type": "tabs",
+      "children": [{
+        "id": "xh-workbench-leaf",
+        "type": "leaf",
+        "state": { "type": "xinghai-workbench-view", "state": {}, "icon": "orbit", "title": "星海知枢" }
+      }],
+      "currentTab": 0
+    }],
+    "direction": "vertical"
   },
   "left": {
-    "id": "2f8a4c6e0d1b9357",
+    "id": "xh-left-split",
     "type": "split",
-    "children": [
-      {
-        "id": "7c31e9a5b0d6428f",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "0ab49e16c5728d3f",
-            "type": "leaf",
-            "state": {
-              "type": "file-explorer",
-              "state": {
-                "sortOrder": "alphabetical",
-                "autoReveal": false
-              },
-              "icon": "lucide-folder-closed",
-              "title": "知识库"
-            }
-          },
-          {
-            "id": "b8d25f607c1a934e",
-            "type": "leaf",
-            "state": {
-              "type": "search",
-              "state": {
-                "query": "",
-                "matchingCase": false,
-                "explainSearch": false,
-                "collapseAll": false,
-                "extraContext": false,
-                "sortOrder": "byModifiedTime"
-              },
-              "icon": "lucide-search",
-              "title": "搜索"
-            }
-          },
-          {
-            "id": "3e76a91c4bd5028f",
-            "type": "leaf",
-            "state": {
-              "type": "bookmarks",
-              "state": {},
-              "icon": "lucide-bookmark",
-              "title": "书签"
-            }
+    "children": [{
+      "id": "xh-left-tabs",
+      "type": "tabs",
+      "children": [
+        {
+          "id": "xh-files-leaf",
+          "type": "leaf",
+          "state": {
+            "type": "file-explorer",
+            "state": { "sortOrder": "alphabetical", "autoReveal": false },
+            "icon": "lucide-folder-closed",
+            "title": "文件列表"
           }
-        ],
-        "currentTab": 0
-      }
-    ],
+        },
+        {
+          "id": "xh-search-leaf",
+          "type": "leaf",
+          "state": {
+            "type": "search",
+            "state": {
+              "query": "",
+              "matchingCase": false,
+              "explainSearch": false,
+              "collapseAll": false,
+              "extraContext": false,
+              "sortOrder": "byModifiedTime"
+            },
+            "icon": "lucide-search",
+            "title": "搜索"
+          }
+        },
+        {
+          "id": "xh-bookmarks-leaf",
+          "type": "leaf",
+          "state": { "type": "bookmarks", "state": {}, "icon": "lucide-bookmark", "title": "书签" }
+        }
+      ],
+      "currentTab": 0
+    }],
     "direction": "horizontal",
-    "width": 280
+    "width": 240
   },
   "right": {
-    "id": "f1c8437a2d0e965b",
+    "id": "xh-right-split",
     "type": "split",
-    "children": [
-      {
-        "id": "5a92d0e47c1b638f",
-        "type": "tabs",
-        "dimension": 47,
-        "children": [
-          {
-            "id": "d73e1a9c4b6082f5",
-            "type": "leaf",
-            "state": {
-              "type": "file-properties",
-              "state": {
-                "file": "00-Wiki入口/00-星海工作台.md"
-              },
-              "icon": "lucide-info",
-              "title": "工作台属性"
-            }
-          },
-          {
-            "id": "4c8b205f6d1a793e",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "00-Wiki入口/00-星海工作台.md",
-                "followCursor": true,
-                "showSearch": false,
-                "searchQuery": ""
-              },
-              "icon": "lucide-list",
-              "title": "大纲"
-            }
-          }
-        ],
-        "currentTab": 0
-      },
-      {
-        "id": "9f1d63b8e2a7405c",
-        "type": "tabs",
-        "dimension": 53,
-        "children": [
-          {
-            "id": "1b5e8a407c2d93f6",
-            "type": "leaf",
-            "state": {
-              "type": "backlink",
-              "state": {
-                "file": "00-Wiki入口/00-星海工作台.md",
-                "collapseAll": false,
-                "extraContext": false,
-                "sortOrder": "alphabetical",
-                "showSearch": false,
-                "searchQuery": "",
-                "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
-              },
-              "icon": "links-coming-in",
-              "title": "关联笔记"
-            }
-          },
-          {
-            "id": "6e204b7d9c3a18f5",
-            "type": "leaf",
-            "state": {
-              "type": "outgoing-link",
-              "state": {
-                "file": "00-Wiki入口/00-星海工作台.md",
-                "linksCollapsed": false,
-                "unlinkedCollapsed": true
-              },
-              "icon": "links-going-out",
-              "title": "出链"
-            }
-          },
-          {
-            "id": "a37c5e1d809b624f",
-            "type": "leaf",
-            "state": {
-              "type": "tag",
-              "state": {
-                "sortOrder": "frequency",
-                "useHierarchy": true,
-                "showSearch": false,
-                "searchQuery": ""
-              },
-              "icon": "lucide-tags",
-              "title": "标签"
-            }
-          }
-        ],
-        "currentTab": 0
-      }
-    ],
+    "children": [{
+      "id": "xh-right-tabs",
+      "type": "tabs",
+      "children": [{
+        "id": "xh-sidebar-leaf",
+        "type": "leaf",
+        "state": {
+          "type": "xinghai-workbench-sidebar",
+          "state": {},
+          "icon": "calendar-range",
+          "title": "星海信息栏"
+        }
+      }],
+      "currentTab": 0
+    }],
     "direction": "horizontal",
     "width": 300
   },
-  "left-ribbon": {
-    "hiddenItems": {
-      "switcher:打开快速切换": false,
-      "graph:查看关系图谱": false,
-      "canvas:新建白板": false,
-      "daily-notes:打开/创建今天的日记": false,
-      "templates:插入模板": false,
-      "command-palette:打开命令面板": false,
-      "bases:新建数据库": false,
-      "audio-recorder:开始/结束录音": false
-    }
-  },
-  "active": "e52d7a90b3c6481f",
-  "lastOpenFiles": [
-    "00-Wiki入口/00-星海工作台.md",
-    "00-Wiki入口/00-首页.md",
-    "00-Wiki入口/02-知识库总览.base",
-    "90-资料收件箱/收件箱处理规则.md",
-    "20-工作流模板/AI提示词/四步协作式简历优化与面试预演提示词.md",
-    "20-工作流模板/AI提示词/四步协作式PPT策划与制作提示词.md",
-    "20-工作流模板/工作流模板索引.md",
-    "10-主题知识/主题知识索引.md",
-    "30-复盘沉淀/复盘沉淀索引.md"
-  ]
+  "active": "xh-workbench-leaf",
+  "lastOpenFiles": []
 }

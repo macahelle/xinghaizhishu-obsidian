@@ -129,6 +129,15 @@ assert.match(source, /restoreWorkspaceSidebars\(\)/);
 assert.match(source, /sidebarRestoreState/);
 assert.match(source, /submit\.disabled\s*=\s*true/);
 assert.match(source, /label:\s*"工作任务"/);
+assert.match(source, /project:\s*{[\s\S]*?frontmatterType:\s*"project"/);
+assert.match(source, /id:\s*"add-active-project"/);
+assert.match(source, /openProjectModal\(\)/);
+assert.match(source, /status = captureType === "project" \? "active"/);
+assert.match(source, /## 项目目标[\s\S]*## 项目任务/);
+assert.match(source, /getLeavesOfType\("backlink"\)[\s\S]*leaf\.detach\(\)/);
+assert.doesNotMatch(source, /\["link-2",\s*"反向链接"/);
+assert.match(source, /\["日",\s*"一",\s*"二",\s*"三",\s*"四",\s*"五",\s*"六"\]/);
+assert.match(source, /const offset = first\.getDay\(\)/);
 assert.doesNotMatch(source, /"仅查看日期"/);
 assert.match(source, /mountGlobalHomeBrand\(/);
 assert.match(source, /element\(header,\s*"div",\s*"xh-global-home-banner"\)/);
@@ -141,6 +150,9 @@ assert.match(styles, /\.theme-light\s+\.xh-constellation\s*{[^}]*background-size
 assert.doesNotMatch(styles, /\.xh-action-button\.is-secondary\s*{/);
 assert.match(styles, /\.xh-constellation-topbar\s*{[^}]*height:\s*38px/s);
 assert.match(styles, /\.xh-sidebar-root\s*{[^}]*grid-template-rows:/s);
+assert.match(styles, /\.xh-focus-module\s*{[^}]*display:\s*flex[^}]*flex-direction:\s*column/s);
+assert.match(styles, /\.xh-focus-controls\s*{[^}]*flex:\s*0 0 auto[^}]*padding-bottom:\s*1px/s);
+assert.match(styles, /\.xh-calendar-day\s*{[^}]*width:\s*22px[^}]*height:\s*22px/s);
 assert.match(styles, /\.xh-tags\s*{[^}]*overflow-y:\s*auto/s);
 assert.match(styles, /\.xh-global-home-banner\s*{[^}]*inset:\s*0[^}]*pointer-events:\s*none/s);
 assert.match(styles, /\.theme-light\s+\.xh-shadow-planet\s*{[^}]*--xh-shadow-planet-light|\.theme-light\s+\.xh-shadow-planet\s*{[^}]*background-image:\s*var\(--xh-shadow-planet-light\)/s);
@@ -217,9 +229,41 @@ async function verifySidebarRestore() {
   assert.equal(plugin.settings.sidebarRestoreState, null);
 }
 
+async function verifyProjectCreation() {
+  const PluginClass = moduleStub.exports;
+  const plugin = Object.create(PluginClass.prototype);
+  const created = new Map();
+  const projectsFolder = { path: "Work/Projects", children: [] };
+  plugin.app = {
+    vault: {
+      getRoot: () => ({ path: "", children: [{ path: "Work", children: [projectsFolder] }] }),
+      getMarkdownFiles: () => [],
+      getAbstractFileByPath: (path) => created.get(path) || null,
+      create: async (path, content) => {
+        const file = { path, content };
+        created.set(path, file);
+        return file;
+      },
+    },
+  };
+  plugin.settings = { contentMappings: {} };
+  plugin.refreshAll = async () => {};
+  const record = await plugin.createCapture({
+    content: "知识库升级\n完成星海工作台",
+    captureType: "project",
+    targetFolder: "Work/Projects",
+  });
+  assert.match(record.path, /^Work\/Projects\/\d{4}-\d{2}-\d{2}-\d{6}-知识库升级\.md$/);
+  assert.match(record.content, /^type: project$/m);
+  assert.match(record.content, /^status: active$/m);
+  assert.match(record.content, /## 项目目标\n\n完成星海工作台/);
+  assert.match(record.content, /## 项目任务\n\n- \[ \] 补充项目任务/);
+}
+
 verifyLinkedTaskSync()
   .then(async () => {
     await verifySidebarRestore();
+    await verifyProjectCreation();
     const PluginClass = moduleStub.exports;
     const plugin = Object.create(PluginClass.prototype);
     const folder = (path, children = []) => ({ path, children });
@@ -257,12 +301,8 @@ verifyLinkedTaskSync()
     plugin.app.metadataCache.getFileCache = (file) => ({
       frontmatter: file === noteA ? { type: "task", status: "todo" } : { type: "idea", source: "manual" },
     });
-    plugin.app.metadataCache.resolvedLinks = {
-      "Work/a.md": { "Ideas/b.md": 2 },
-      "Ideas/b.md": { "Work/a.md": 1 },
-    };
     const summary = await plugin.getVaultSummary();
-    assert.equal(summary.backlinks, 3);
+    assert.equal(Object.prototype.hasOwnProperty.call(summary, "backlinks"), false);
     assert.equal(summary.properties, 3);
     assert.equal(summary.words, 6);
     assert.equal(summary.characters, 12);

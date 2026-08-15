@@ -39,6 +39,11 @@ const CAPTURE_TYPES = {
     keywords: ["任务", "待办", "工作", "项目", "todo", "task", "project"],
     canAddToToday: true,
   },
+  project: {
+    label: "进行中的项目",
+    frontmatterType: "project",
+    keywords: ["项目", "工作流", "project", "projects"],
+  },
   article: {
     label: "外部文章知识采集",
     frontmatterType: "article",
@@ -350,13 +355,13 @@ function moduleHeader(parent, icon, title, meta = "") {
 }
 
 class CaptureModal extends Modal {
-  constructor(app, plugin, onSubmit) {
+  constructor(app, plugin, onSubmit, initialCaptureType = "task") {
     super(app);
     this.plugin = plugin;
     this.onSubmit = onSubmit;
     this.content = "";
-    this.captureType = "task";
-    this.targetFolder = plugin.getMappedFolder("task");
+    this.captureType = CAPTURE_TYPES[initialCaptureType] ? initialCaptureType : "task";
+    this.targetFolder = plugin.getMappedFolder(this.captureType);
     this.time = "";
     this.sourceUrl = "";
     this.addToToday = false;
@@ -368,8 +373,10 @@ class CaptureModal extends Modal {
     this.modalEl.addClass("xh-capture-dialog");
     contentEl.addClass("xh-modal");
     contentEl.addClass("xh-capture-modal");
-    element(contentEl, "h2", "", "新增内容");
-    element(contentEl, "p", "xh-muted", "选择内容类型后，插件会按当前知识库的目录与文章关系映射保存；本次也可以改用其他目录。");
+    element(contentEl, "h2", "", this.captureType === "project" ? "新增项目" : "新增内容");
+    element(contentEl, "p", "xh-muted", this.captureType === "project"
+      ? "首行填写项目名称，其余内容作为项目目标；保存目录由你在下方确认。"
+      : "选择内容类型后，插件会按当前知识库的目录与文章关系映射保存；本次也可以改用其他目录。");
     let contentInput;
     let folderSelect;
     let timeInput;
@@ -403,7 +410,7 @@ class CaptureModal extends Modal {
         contentInput = text.inputEl;
         contentInput.setAttribute("required", "");
         contentInput.setAttribute("aria-required", "true");
-        text.setPlaceholder("输入任务、灵感或文章摘要…")
+        text.setPlaceholder(this.captureType === "project" ? "项目名称\n项目目标（可选）" : "输入任务、灵感或文章摘要…")
           .onChange((value) => {
             this.content = value.trim();
             clearError();
@@ -1010,10 +1017,12 @@ class XinghaiWorkbenchView extends ItemView {
   async renderProjectsModule(grid) {
     const projects = await this.plugin.getActiveProjects();
     const card = element(grid, "article", "xh-module");
-    moduleHeader(card, "folder-kanban", "进行中的项目", `${projects.length} 个`);
+    const header = moduleHeader(card, "folder-kanban", "进行中的项目", `${projects.length} 个`);
+    const addProject = iconButton(header, "plus", "新增项目", "xh-module-action");
+    addProject.addEventListener("click", () => this.plugin.openProjectModal());
     const list = element(card, "div", "xh-project-list");
     if (!projects.length) {
-      this.renderEmpty(list, "folder-plus", "暂无进行中的项目", "为项目笔记添加 type: project 与 status: active");
+      this.renderEmpty(list, "folder-plus", "暂无进行中的项目", "点击右上角“新增项目”创建项目笔记");
       return;
     }
     projects.slice(0, 3).forEach((project) => {
@@ -1166,9 +1175,9 @@ class SidebarRenderer {
     const monthDate = this.plugin.calendarMonth;
     element(section, "div", "xh-calendar-month", `${monthDate.getFullYear()}年 ${monthDate.getMonth() + 1}月`);
     const calendar = element(section, "div", "xh-calendar-grid");
-    ["一", "二", "三", "四", "五", "六", "日"].forEach((day) => element(calendar, "span", "xh-weekday", day));
+    ["日", "一", "二", "三", "四", "五", "六"].forEach((day) => element(calendar, "span", "xh-weekday", day));
     const first = new Date(monthDate.getFullYear(), monthDate.getMonth(), 1);
-    const offset = (first.getDay() + 6) % 7;
+    const offset = first.getDay();
     const gridStart = new Date(first);
     gridStart.setDate(first.getDate() - offset);
     for (let index = 0; index < 42; index += 1) {
@@ -1369,6 +1378,7 @@ module.exports = class XinghaiWorkbenchPlugin extends Plugin {
     homeRibbon.addClass("xh-home-ribbon");
     this.addCommand({ id: "open-xinghai-workbench", name: "打开星海知枢工作台", callback: () => this.activateWorkbench() });
     this.addCommand({ id: "add-today-task", name: "新增今日任务", callback: () => this.openTaskModal() });
+    this.addCommand({ id: "add-active-project", name: "新增进行中的项目", callback: () => this.openProjectModal() });
     this.addCommand({ id: "open-weekly-review", name: "打开本周复盘", callback: () => this.openWeeklyReview() });
     this.addSettingTab(new XinghaiSettingTab(this.app, this));
 
@@ -1397,6 +1407,7 @@ module.exports = class XinghaiWorkbenchPlugin extends Plugin {
     }, 1000));
 
     this.app.workspace.onLayoutReady(() => {
+      this.app.workspace.getLeavesOfType("backlink").forEach((leaf) => leaf.detach());
       if (!this.app.workspace.getLeavesOfType(WORKBENCH_VIEW).length) this.activateWorkbench(false);
       this.updateVaultSummary();
       this.mountGlobalHomeBrand();
@@ -1593,14 +1604,11 @@ module.exports = class XinghaiWorkbenchPlugin extends Plugin {
       const frontmatter = this.app.metadataCache.getFileCache(file)?.frontmatter || {};
       Object.keys(frontmatter).forEach((key) => propertyKeys.add(key));
     });
-    const backlinks = Object.values(this.app.metadataCache.resolvedLinks || {}).reduce((total, targets) => (
-      total + Object.values(targets || {}).reduce((sum, count) => sum + Number(count || 0), 0)
-    ), 0);
     return textStats.reduce((summary, item) => ({
       ...summary,
       words: summary.words + item.words,
       characters: summary.characters + item.characters,
-    }), { backlinks, properties: propertyKeys.size, words: 0, characters: 0 });
+    }), { properties: propertyKeys.size, words: 0, characters: 0 });
   }
 
   renderVaultSummary(summary) {
@@ -1608,7 +1616,6 @@ module.exports = class XinghaiWorkbenchPlugin extends Plugin {
     const formatter = new Intl.NumberFormat("zh-CN");
     this.vaultSummaryEl.empty();
     [
-      ["link-2", "反向链接", summary.backlinks],
       ["list-tree", "笔记属性", summary.properties],
       ["whole-word", "词", summary.words],
       ["text-cursor-input", "字符", summary.characters],
@@ -1620,7 +1627,7 @@ module.exports = class XinghaiWorkbenchPlugin extends Plugin {
     });
     this.vaultSummaryEl.setAttr(
       "title",
-      `整个知识库：${formatter.format(summary.backlinks)} 个反向链接，${formatter.format(summary.properties)} 个笔记属性，${formatter.format(summary.words)} 个词，${formatter.format(summary.characters)} 个字符`,
+      `整个知识库：${formatter.format(summary.properties)} 个笔记属性，${formatter.format(summary.words)} 个词，${formatter.format(summary.characters)} 个字符`,
     );
   }
 
@@ -1721,6 +1728,10 @@ module.exports = class XinghaiWorkbenchPlugin extends Plugin {
     new CaptureModal(this.app, this, (payload) => this.createCapture(payload)).open();
   }
 
+  openProjectModal() {
+    new CaptureModal(this.app, this, (payload) => this.createCapture(payload), "project").open();
+  }
+
   findRelationNote(folder) {
     const directFiles = this.app.vault.getMarkdownFiles().filter((file) => file.parent?.path === folder);
     return directFiles.sort((a, b) => {
@@ -1764,8 +1775,10 @@ module.exports = class XinghaiWorkbenchPlugin extends Plugin {
     const keywordLine = articleKeywords.length ? `keywords: ${JSON.stringify(articleKeywords)}\n` : "";
     const relation = this.findRelationNote(folder);
     const relationLine = relation ? `related: ${JSON.stringify(`[[${relation.path.replace(/\.md$/i, "")}]]`)}\n` : "";
-    const status = captureType === "task" ? "todo" : "captured";
-    const body = captureType === "task"
+    const status = captureType === "project" ? "active" : captureType === "task" ? "todo" : "captured";
+    const body = captureType === "project"
+      ? `## 项目目标\n\n${details || "待补充"}\n\n## 项目任务\n\n- [ ] 补充项目任务\n`
+      : captureType === "task"
       ? `## 任务内容\n\n- [ ] ${title}${details ? `\n\n${details}` : ""}\n`
       : captureType === "article"
         ? `## 文章摘要\n\n${contentText}\n\n${sourceUrl ? `- 来源：[打开原文](${sourceUrl})\n` : "- 来源：待补充\n"}\n## 知识提炼\n`
@@ -1779,7 +1792,9 @@ module.exports = class XinghaiWorkbenchPlugin extends Plugin {
       this.settings.mappingConfigured = this.hasRequiredMappings();
       await this.saveSettings();
     }
-    if (addToToday && !addedToday) {
+    if (captureType === "project") {
+      new Notice(`项目已创建并保存到 ${folder}`);
+    } else if (addToToday && !addedToday) {
       new Notice(`记录已保存到 ${folder}；日记未配置或今日三件事已满，未加入今日`);
     } else if (addedToday) {
       new Notice(`工作任务已保存到 ${folder}，并加入今日三件事`);

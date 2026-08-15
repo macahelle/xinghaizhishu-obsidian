@@ -23,6 +23,7 @@ PALE = "F6F7FC"
 WHITE = "FFFFFF"
 RED = "B42318"
 FONT = "Arial Unicode MS"
+EAST_ASIA_FONT = "Arial Unicode MS"
 
 
 def set_cell_shading(cell, fill):
@@ -103,7 +104,7 @@ def set_run_font(run, size=None, bold=None, color=None, italic=None, font=FONT):
     run.font.name = font
     run._element.get_or_add_rPr().rFonts.set(qn("w:ascii"), font)
     run._element.get_or_add_rPr().rFonts.set(qn("w:hAnsi"), font)
-    run._element.get_or_add_rPr().rFonts.set(qn("w:eastAsia"), font)
+    run._element.get_or_add_rPr().rFonts.set(qn("w:eastAsia"), EAST_ASIA_FONT)
     run._element.get_or_add_rPr().rFonts.set(qn("w:cs"), font)
     if size is not None:
         run.font.size = Pt(size)
@@ -163,7 +164,7 @@ def configure_document(doc, short_title):
     normal.font.name = FONT
     normal._element.rPr.rFonts.set(qn("w:ascii"), FONT)
     normal._element.rPr.rFonts.set(qn("w:hAnsi"), FONT)
-    normal._element.rPr.rFonts.set(qn("w:eastAsia"), FONT)
+    normal._element.rPr.rFonts.set(qn("w:eastAsia"), EAST_ASIA_FONT)
     normal._element.rPr.rFonts.set(qn("w:cs"), FONT)
     normal.font.size = Pt(10.5)
     normal.font.color.rgb = RGBColor.from_string(TEXT)
@@ -180,7 +181,7 @@ def configure_document(doc, short_title):
         style.font.name = FONT
         style._element.rPr.rFonts.set(qn("w:ascii"), FONT)
         style._element.rPr.rFonts.set(qn("w:hAnsi"), FONT)
-        style._element.rPr.rFonts.set(qn("w:eastAsia"), FONT)
+        style._element.rPr.rFonts.set(qn("w:eastAsia"), EAST_ASIA_FONT)
         style._element.rPr.rFonts.set(qn("w:cs"), FONT)
         style.font.size = Pt(size)
         style.font.bold = True
@@ -200,7 +201,7 @@ def configure_document(doc, short_title):
     footer = section.footer
     p = footer.paragraphs[0]
     p.alignment = WD_ALIGN_PARAGRAPH.RIGHT
-    r = p.add_run("主题 3.2.0  ·  插件 1.2.3  ·  第 ")
+    r = p.add_run("主题 3.2.0  ·  插件 1.2.4  ·  第 ")
     set_run_font(r, size=8.5, color=MUTED)
     add_page_field(p)
     r = p.add_run(" 页")
@@ -231,7 +232,7 @@ def add_cover(doc, title, subtitle, audience):
     fix_table_geometry(table, [2700, 6660])
     set_repeat_table_header(table.rows[0])
     rows = [
-        ("适用版本", "主题 3.2.0 / 插件 1.2.3"),
+        ("适用版本", "主题 3.2.0 / 插件 1.2.4"),
         ("运行环境", "macOS 或 Windows + Obsidian 1.9.0 或更高版本"),
         ("适用对象", audience),
         ("更新日期", "2026-08-15"),
@@ -434,7 +435,7 @@ def build_installation_guide():
         ("最低版本", "Obsidian 1.9.0"),
         ("已验证桌面版", "Obsidian 1.13.7（macOS）"),
         ("主题版本", "3.2.0"),
-        ("插件版本", "1.2.3"),
+        ("插件版本", "1.2.4"),
         ("正式包", "星海知枢-工作台-v3.2.0-正式版.zip"),
     ])
     add_heading(doc, "1.1 必须备份", 2)
@@ -446,14 +447,13 @@ def build_installation_guide():
     ])
     add_callout(doc, "注意", "复制工作区预设前必须完全退出 Obsidian，否则应用退出时可能用旧状态覆盖新文件。", warning=True)
 
-    add_section_page(doc, 2, "识别安装包", "解压正式 ZIP 后，核心内容包括主题、插件、工作台模板和说明文件。")
+    add_section_page(doc, 2, "识别安装包", "解压正式 ZIP 后，核心内容包括主题、插件、可选工作区预设和说明文件。")
     add_key_value_table(doc, [
         ("`星海知枢/`", "主题文件夹，含 `theme.css`、`manifest.json` 和视觉资产。"),
         ("`xinghai-workbench/`", "本地插件，含 `main.js`、`styles.css`、`manifest.json` 和资产。"),
-        ("`工作台/`", "Markdown、Base、桌面工作区和图谱参考预设。"),
+        ("`工作台/`", "桌面工作区、外观和图谱参考预设。"),
         ("`README.md`", "产品概览、结构与兼容说明。"),
         ("`INSTALL.md`", "简版安装、启用和回滚说明。"),
-        ("`QA-STATUS.md`", "发布验收状态与未验证限制。"),
     ])
 
     add_section_page(doc, 3, "macOS 与 Windows 完整安装", "以知识库 `Tmac` 为例；请把示例路径替换为你自己的实际知识库路径。两个系统的库内相对目录完全相同。")
@@ -469,7 +469,6 @@ def build_installation_guide():
         "解压 `星海知枢-工作台-v3.2.0-正式版.zip`。",
         "把整个 `星海知枢` 文件夹复制到 `Tmac/.obsidian/themes/星海知枢/`。",
         "把整个 `xinghai-workbench` 文件夹复制到 `Tmac/.obsidian/plugins/xinghai-workbench/`。",
-        "可选：把 `工作台/00-星海工作台.md` 和 `03-工作台视图.base` 复制到知识库中的入口目录。",
         "启动 Obsidian，进入“设置 → 外观 → 主题”，选择“星海知枢”。",
         "进入“设置 → 第三方插件”，允许第三方插件并启用“星海知枢工作台”。",
         "点击左侧 Ribbon 中的主页图标，或在命令面板运行“打开星海知枢工作台”。",
@@ -483,6 +482,7 @@ def build_installation_guide():
         "星图应按知识库的实际一级目录动态生成，节点可点击。",
         "今日三件事的勾选应写回当日 Markdown 日记，并显示保存状态。",
         "项目进度应根据项目笔记的任务完成比自动计算。",
+        "“进行中的项目”右上角应显示新增按钮，打开表单后由用户选择保存目录。",
         "专注计时支持 25 和 50 分钟，刷新后会话与当日累计数据应保留。",
         "点击无日记的日期应先询问，不得因浏览静默新建文件。",
     ])
@@ -602,6 +602,12 @@ def build_product_manual():
     ])
     add_heading(doc, "5.2 进行中的项目", 2)
     add_body(doc, "项目笔记需要 Properties：`type: project` 与 `status: active`。进度 = 正文中已完成任务数 ÷ 全部任务数；没有任务时显示 0%。")
+    add_steps(doc, [
+        "点击“进行中的项目”卡片右上角的新增按钮。",
+        "首行填写项目名称，其余内容填写项目目标。",
+        "选择保存目录；若该类型尚未映射，可选择是否记住该目录。",
+        "点击“创建记录”，插件写入 `type: project`、`status: active` 的 Markdown 项目笔记并刷新项目列表。",
+    ])
     add_heading(doc, "5.3 专注计时", 2)
     add_steps(doc, [
         "选择 25 分钟或 50 分钟。",
@@ -612,7 +618,7 @@ def build_product_manual():
 
     add_section_page(doc, 6, "日历、时间线、关联与标签", "右侧面板只读取 Obsidian 内部数据，不连接外部日历或网络服务。")
     add_key_value_table(doc, [
-        ("日历", "显示今天、选中日期以及有无日记状态。"),
+        ("日历", "按 macOS 月历的周日到周六顺序显示完整六周、今天、选中日期以及有无日记状态。"),
         ("时间线", "解析当日日记中带 `HH:mm` 的任务或列表项。"),
         ("关联笔记", "结合当前笔记的入链、出链、入口特征和更新时间生成关联图。"),
         ("标签", "显示真实标签使用次数和来源目录，点击后进入相关内容。"),
@@ -680,7 +686,7 @@ def build_product_manual():
     ])
     add_heading(doc, "10.2 交付验收清单", 2)
     add_bullets(doc, [
-        "主题 3.2.0 和插件 1.2.3 正常加载。",
+        "主题 3.2.0 和插件 1.2.4 正常加载。",
         "Ribbon 主页入口能从二级笔记返回原工作台。",
         "任务写回、项目进度、专注持久化与工作区恢复正常。",
         "日历不静默创建，时间线读取真实日记。",

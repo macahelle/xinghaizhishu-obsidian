@@ -27,5 +27,13 @@ __pycache__/
 *.egg-info/
 .env
 
+# Regenerable or retired project artifacts
+/memory-update/
+/backup/
+/assets/brand/
+/qa/*-render-*/
+/qa/*-release-*/
+/release/*-候选版*
+
 # 日志
 *.log

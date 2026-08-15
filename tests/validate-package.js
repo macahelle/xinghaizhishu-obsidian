@@ -17,6 +17,16 @@ const jsonFiles = [
 
 jsonFiles.forEach((file) => JSON.parse(fs.readFileSync(file, "utf8")));
 
+const workspacePreset = JSON.parse(fs.readFileSync("工作台/workspace-xinghai.json", "utf8"));
+function leafTypes(node) {
+  if (!node || typeof node !== "object") return [];
+  const current = node.type === "leaf" ? [node.state?.type] : [];
+  return current.concat((node.children || []).flatMap(leafTypes));
+}
+assert.deepEqual(leafTypes(workspacePreset.main), ["xinghai-workbench-view"]);
+assert.deepEqual(leafTypes(workspacePreset.right), ["xinghai-workbench-sidebar"]);
+assert.doesNotMatch(JSON.stringify(workspacePreset), /"backlink"/);
+
 for (const file of ["xinghai-workbench/styles.css", "星海知枢/theme.css"]) {
   const css = fs.readFileSync(file, "utf8").replace(/\/\*[\s\S]*?\*\//g, "");
   let depth = 0;
@@ -72,9 +82,32 @@ const releaseName = `星海知枢-工作台-v${themeManifest.version}-正式版`
 const releaseRoot = path.join("release", releaseName);
 const pluginCount = assertTreeMatches("xinghai-workbench", "test-vault/.obsidian/plugins/xinghai-workbench", "test plugin");
 const themeCount = assertTreeMatches("星海知枢", "test-vault/.obsidian/themes/星海知枢", "test theme");
-const releasePluginCount = assertTreeMatches("xinghai-workbench", path.join(releaseRoot, "xinghai-workbench"), "release plugin");
-const releaseThemeCount = assertTreeMatches("星海知枢", path.join(releaseRoot, "星海知枢"), "release theme");
-const releaseWorkspaceCount = assertTreeMatches("工作台", path.join(releaseRoot, "工作台"), "release workspace");
+const runtimeFiles = [
+  "xinghai-workbench/main.js",
+  "xinghai-workbench/manifest.json",
+  "xinghai-workbench/styles.css",
+  "xinghai-workbench/assets/xinghai-constellation-dark.png",
+  "xinghai-workbench/assets/xinghai-constellation-light.png",
+  "xinghai-workbench/assets/xinghai-logo-reference.png",
+  "xinghai-workbench/assets/xinghai-shadow-planet-dark.png",
+  "xinghai-workbench/assets/xinghai-shadow-planet-light.png",
+  "xinghai-workbench/assets/xinghai-starfield-dark.png",
+  "xinghai-workbench/assets/xinghai-starfield-light.png",
+  "星海知枢/manifest.json",
+  "星海知枢/theme.css",
+  "星海知枢/assets/xinghai-starfield-dark.png",
+  "星海知枢/assets/xinghai-starfield-light.png",
+  "工作台/appearance-xinghai.json",
+  "工作台/graph-xinghai.json",
+  "工作台/workspace-xinghai.json",
+];
+runtimeFiles.forEach((relative) => {
+  assert.equal(
+    digest(fs.readFileSync(path.join(releaseRoot, relative))),
+    digest(fs.readFileSync(relative)),
+    `release: stale ${relative}`,
+  );
+});
 const releaseDocuments = [
   ["README.md", "README.md"],
   ["INSTALL.md", "INSTALL.md"],
@@ -89,10 +122,19 @@ assert.ok(fs.existsSync(archive), `missing ${archive}`);
 const archiveEntries = execFileSync("unzip", ["-Z1", archive], { encoding: "utf8", maxBuffer: 4 * 1024 * 1024 });
 assert.doesNotMatch(archiveEntries, /(?:^|\/)__MACOSX(?:\/|$)|(?:^|\/)\._/m, "archive contains macOS metadata files");
 const candidateFiles = filesUnder(releaseRoot);
+const expectedCandidateFiles = [
+  ...runtimeFiles,
+  ...releaseDocuments.map(([, packaged]) => packaged),
+].sort();
+assert.deepEqual(
+  candidateFiles.map((file) => path.relative(releaseRoot, file)).sort(),
+  expectedCandidateFiles,
+  "release contains a missing or non-runtime file",
+);
 candidateFiles.forEach((candidateFile) => {
   const relative = path.relative(releaseRoot, candidateFile);
   const archived = execFileSync("unzip", ["-p", archive, `${releaseName}/${relative}`], { maxBuffer: 64 * 1024 * 1024 });
   assert.equal(digest(archived), digest(fs.readFileSync(candidateFile)), `archive: stale ${relative}`);
 });
 
-console.log(`package: ${jsonFiles.length} JSON, 2 CSS, ${requiredVaultPaths.length} vault paths, ${pluginCount + themeCount + releasePluginCount + releaseThemeCount + releaseWorkspaceCount + releaseDocuments.length} synchronized files and ${candidateFiles.length} archived files passed`);
+console.log(`package: ${jsonFiles.length} JSON, 2 CSS, ${requiredVaultPaths.length} vault paths, ${pluginCount + themeCount} test files and ${candidateFiles.length} allowlisted release files passed`);

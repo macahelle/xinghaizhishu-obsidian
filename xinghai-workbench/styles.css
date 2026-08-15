@@ -25,7 +25,7 @@
 .xh-sidebar-root {
   display: grid;
   grid-template-rows:
-    minmax(178px, 1.25fr)
+    minmax(248px, 1.55fr)
     minmax(76px, 0.78fr)
     minmax(112px, 1.08fr)
     minmax(86px, 0.94fr);
@@ -848,15 +848,20 @@
 }
 
 .xh-focus-module {
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
   text-align: center;
 }
 
 .xh-focus-module .xh-module-header {
+  margin-bottom: 2px;
   text-align: left;
 }
 
 .xh-focus-target {
-  margin: 7px auto 4px;
+  flex: 0 0 auto;
+  margin: 2px auto 1px;
   max-width: 80%;
   overflow: hidden;
   color: var(--text-normal);
@@ -867,10 +872,11 @@
 }
 
 .xh-countdown {
-  min-height: 24px;
+  flex: 0 0 auto;
+  min-height: 20px;
   color: #bca6ff;
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
   letter-spacing: 0.08em;
 }
@@ -886,8 +892,9 @@
 }
 
 .xh-progress-track {
+  flex: 0 0 auto;
   width: min(66%, 340px);
-  margin: 4px auto 13px;
+  margin: 2px auto 6px;
 }
 
 .xh-progress-bar,
@@ -901,9 +908,33 @@
 
 .xh-focus-controls {
   display: flex;
+  flex: 0 0 auto;
   align-items: center;
   justify-content: center;
+  margin-top: 0;
+  padding-bottom: 1px;
   gap: 16px;
+}
+
+.xh-module-action {
+  width: 26px;
+  height: 26px;
+  flex: 0 0 auto;
+  margin-left: 6px;
+  border: 1px solid var(--xh-border) !important;
+  border-radius: 6px;
+  color: var(--text-muted);
+}
+
+.xh-module-action:hover {
+  color: var(--text-normal);
+  border-color: var(--xh-border-strong) !important;
+  background: rgba(126, 96, 214, 0.14) !important;
+}
+
+.xh-module-action svg {
+  width: 14px;
+  height: 14px;
 }
 
 .xh-segmented {
@@ -1408,7 +1439,10 @@
   position: relative;
   display: grid;
   place-items: center;
-  aspect-ratio: 1;
+  width: 22px;
+  height: 22px;
+  margin: 0 auto;
+  aspect-ratio: auto;
   min-width: 0;
   padding: 0;
   border: 0;
