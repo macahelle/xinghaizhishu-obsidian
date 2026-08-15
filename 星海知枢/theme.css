@@ -1,7 +1,6 @@
 /*
- * 星海知枢 3.1
+ * 星海知枢 3.2
  * Theme layer: Obsidian shell, typography, native panes and dark/light tokens.
- * Dynamic workbench components live in the xinghai-workbench plugin.
  */
 
 body {
@@ -11,8 +10,6 @@ body {
   --radius-s: 6px;
   --radius-m: 9px;
   --radius-l: 12px;
-  --xh-sidebar-width: 237px;
-  --xh-left-sidebar-width: 237px;
   --xh-soft-shadow: 0 12px 32px rgba(2, 7, 18, 0.24);
 }
 
@@ -99,28 +96,13 @@ select {
 .theme-dark .workspace {
   background-image:
     linear-gradient(90deg, rgba(3, 7, 14, 0.95), rgba(5, 9, 18, 0.28) 28%, rgba(5, 9, 18, 0.28) 72%, rgba(3, 7, 14, 0.95)),
-    var(--xh-runtime-starfield-dark, url("assets/xinghai-starfield-dark.png"));
+    url("assets/xinghai-starfield-dark.png");
 }
 
 .theme-light .workspace {
   background-image:
     linear-gradient(90deg, rgba(245, 247, 252, 0.96), rgba(247, 248, 253, 0.3) 28%, rgba(247, 248, 253, 0.3) 72%, rgba(245, 247, 252, 0.96)),
-    var(--xh-runtime-starfield-light, url("assets/xinghai-starfield-light.png"));
-}
-
-/* URL tokens inside custom properties are resolved by the consuming stylesheet in
- * some Electron builds. Keep the workbench image URL here so it always resolves
- * relative to this theme directory. */
-.theme-dark .xh-workbench-root {
-  background-image:
-    linear-gradient(180deg, rgba(2, 6, 14, 0.34) 0 44%, rgba(3, 7, 16, 0.57) 66%, rgba(3, 7, 16, 0.68) 100%),
-    var(--xh-runtime-starfield-dark, url("assets/xinghai-starfield-dark.png"));
-}
-
-.theme-light .xh-workbench-root {
-  background-image:
-    linear-gradient(180deg, rgba(247, 248, 255, 0.32) 0 40%, rgba(247, 248, 255, 0.67) 58%, rgba(247, 248, 255, 0.94) 100%),
-    var(--xh-runtime-starfield-light, url("assets/xinghai-starfield-light.png"));
+    url("assets/xinghai-starfield-light.png");
 }
 
 .workspace::before {
@@ -185,7 +167,7 @@ select {
   background-color: transparent;
   background-image:
     linear-gradient(rgba(5, 10, 19, 0.74), rgba(5, 10, 19, 0.82)),
-    var(--xh-runtime-starfield-dark, url("assets/xinghai-starfield-dark.png"));
+    url("assets/xinghai-starfield-dark.png");
   background-size: cover;
   background-position: center top, center -178px;
 }
@@ -195,40 +177,9 @@ select {
   background-color: transparent;
   background-image:
     linear-gradient(rgba(248, 249, 253, 0.84), rgba(248, 249, 253, 0.9)),
-    var(--xh-runtime-starfield-light, url("assets/xinghai-starfield-light.png"));
+    url("assets/xinghai-starfield-light.png");
   background-size: cover;
   background-position: center top, center -178px;
-}
-
-.workspace:has(.workspace-leaf-content[data-type="xinghai-workbench-view"]) .mod-root {
-  z-index: 3;
-  overflow: hidden;
-}
-
-.workspace:has(.workspace-leaf-content[data-type="xinghai-workbench-view"]) .mod-left-split {
-  z-index: 2;
-  width: var(--xh-left-sidebar-width) !important;
-  min-width: var(--xh-left-sidebar-width) !important;
-  flex: 0 0 var(--xh-left-sidebar-width) !important;
-}
-
-.workspace:has(.workspace-leaf-content[data-type="xinghai-workbench-view"]) .mod-right-split:not(.is-sidedock-collapsed) {
-  width: var(--xh-sidebar-width) !important;
-  min-width: var(--xh-sidebar-width) !important;
-  flex: 0 0 var(--xh-sidebar-width) !important;
-}
-
-.workspace:has(.workspace-leaf-content[data-type="xinghai-workbench-view"]) .workspace-leaf-content[data-type="xinghai-workbench-view"],
-.workspace:has(.workspace-leaf-content[data-type="xinghai-workbench-view"]) .workspace-tabs:has(.workspace-leaf-content[data-type="xinghai-workbench-view"]),
-.workspace:has(.workspace-leaf-content[data-type="xinghai-workbench-view"]) .workspace-tab-container:has(.workspace-leaf-content[data-type="xinghai-workbench-view"]) {
-  min-width: 0;
-  min-height: 0;
-  overflow: hidden;
-}
-
-.workspace-tabs:has(.workspace-leaf-content[data-type="xinghai-workbench-view"]) > .workspace-tab-header-container,
-.workspace-tabs:has(.workspace-leaf-content[data-type="xinghai-workbench-sidebar"]) > .workspace-tab-header-container {
-  display: none;
 }
 
 .mod-left-split {
@@ -237,10 +188,6 @@ select {
 
 .mod-right-split {
   border-left: 1px solid var(--divider-color);
-}
-
-.mod-right-split:not(.is-sidedock-collapsed) {
-  min-width: min(var(--xh-sidebar-width), 32vw);
 }
 
 .workspace-tab-header-container {
@@ -537,26 +484,6 @@ select:focus {
   .markdown-preview-sizer,
   .markdown-source-view.mod-cm6 .cm-contentContainer {
     max-width: 100%;
-  }
-}
-
-@media (min-width: 761px) and (max-width: 1100px) {
-  body {
-    --xh-sidebar-width: 190px;
-    --xh-left-sidebar-width: 190px;
-  }
-
-  .workspace:has(.workspace-leaf-content[data-type="xinghai-workbench-view"]) .mod-left-split,
-  .workspace:has(.workspace-leaf-content[data-type="xinghai-workbench-view"]) .mod-right-split:not(.is-sidedock-collapsed) {
-    width: var(--xh-sidebar-width) !important;
-    min-width: var(--xh-sidebar-width) !important;
-    flex: 0 0 var(--xh-sidebar-width) !important;
-  }
-}
-
-@media (min-width: 1101px) and (max-width: 1300px) {
-  body {
-    --xh-left-sidebar-width: 214px;
   }
 }
 
