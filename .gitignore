@@ -37,3 +37,6 @@ __pycache__/
 
 # 日志
 *.log
+
+# 本地工作台运行配置（包含知识库目录映射和专注状态）
+/xinghai-workbench/data.json

@@ -6,6 +6,7 @@ const { execFileSync } = require("node:child_process");
 
 const root = path.resolve(__dirname, "..");
 const manifest = JSON.parse(fs.readFileSync(path.join(root, "星海知枢/manifest.json"), "utf8"));
+const pluginManifest = JSON.parse(fs.readFileSync(path.join(root, "xinghai-workbench/manifest.json"), "utf8"));
 const releaseName = `星海知枢-Obsidian主题-v${manifest.version}`;
 const releaseRoot = path.join(root, "release", releaseName);
 const archive = `${releaseRoot}.zip`;
@@ -18,6 +19,17 @@ const expected = [
   "星海知枢/assets/xinghai-starfield-light.png",
   "星海知枢/manifest.json",
   "星海知枢/theme.css",
+  "xinghai-workbench/assets/xinghai-constellation-dark.png",
+  "xinghai-workbench/assets/xinghai-constellation-light.png",
+  "xinghai-workbench/assets/xinghai-logo-reference.png",
+  "xinghai-workbench/assets/xinghai-logo.png",
+  "xinghai-workbench/assets/xinghai-shadow-planet-dark.png",
+  "xinghai-workbench/assets/xinghai-shadow-planet-light.png",
+  "xinghai-workbench/assets/xinghai-starfield-dark.png",
+  "xinghai-workbench/assets/xinghai-starfield-light.png",
+  "xinghai-workbench/main.js",
+  "xinghai-workbench/manifest.json",
+  "xinghai-workbench/styles.css",
 ].sort();
 
 function digest(file) {
@@ -31,8 +43,34 @@ function filesUnder(folder) {
   });
 }
 
+function assertUtf8ArchiveNames(file) {
+  const archiveBuffer = fs.readFileSync(file);
+  let offset = 0;
+  let checked = 0;
+  while (offset + 46 <= archiveBuffer.length) {
+    if (archiveBuffer.readUInt32LE(offset) !== 0x02014b50) {
+      offset += 1;
+      continue;
+    }
+    const flags = archiveBuffer.readUInt16LE(offset + 8);
+    const nameLength = archiveBuffer.readUInt16LE(offset + 28);
+    const extraLength = archiveBuffer.readUInt16LE(offset + 30);
+    const commentLength = archiveBuffer.readUInt16LE(offset + 32);
+    const name = archiveBuffer.subarray(offset + 46, offset + 46 + nameLength);
+    if ([...name].some((byte) => byte >= 0x80)) {
+      assert.ok(flags & 0x0800, "ZIP 中的非 ASCII 文件名缺少 UTF-8 标记");
+      checked += 1;
+    }
+    offset += 46 + nameLength + extraLength + commentLength;
+  }
+  assert.ok(checked > 0, "ZIP 中未检测到需要校验的中文文件名");
+}
+
 assert.equal(manifest.name, "星海知枢");
 assert.equal(manifest.version, "3.2.0");
+assert.equal(pluginManifest.id, "xinghai-workbench");
+assert.equal(pluginManifest.version, "1.2.6");
+execFileSync(process.execPath, ["--check", path.join(root, "xinghai-workbench/main.js")]);
 const css = fs.readFileSync(path.join(root, "星海知枢/theme.css"), "utf8");
 assert.match(css, /xinghai-starfield-dark\.png/);
 assert.match(css, /xinghai-starfield-light\.png/);
@@ -61,11 +99,12 @@ for (const relative of expected) {
   assert.equal(digest(packaged), digest(source), `发布文件不同步：${relative}`);
 }
 
-const entries = execFileSync("unzip", ["-Z1", archive], { encoding: "utf8" });
-assert.doesNotMatch(entries, /xinghai-workbench|test-vault|tests\/|工作台|QA-STATUS|__MACOSX|\/\._/);
+assertUtf8ArchiveNames(archive);
+const entries = execFileSync("bsdtar", ["-tf", archive], { encoding: "utf8" });
+assert.doesNotMatch(entries, /data\.json|test-vault|tests\/|工作台\/|QA-STATUS|__MACOSX|\/\._|\.DS_Store/);
 for (const relative of expected) {
-  const archived = execFileSync("unzip", ["-p", archive, `${releaseName}/${relative}`], { maxBuffer: 64 * 1024 * 1024 });
+  const archived = execFileSync("bsdtar", ["-xOf", archive, `${releaseName}/${relative}`], { maxBuffer: 64 * 1024 * 1024 });
   assert.equal(crypto.createHash("sha256").update(archived).digest("hex"), digest(path.join(releaseRoot, relative)));
 }
 
-console.log(`theme package: ${expected.length} allowlisted files passed`);
+console.log(`theme + workbench package: ${expected.length} allowlisted files passed`);

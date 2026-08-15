@@ -1,18 +1,20 @@
-# 星海知枢 Obsidian 主题需求基线
+# 星海知枢 Obsidian 主题与工作台需求基线
 
 ## 交付形态
 
 - `星海知枢/manifest.json`：Obsidian 主题元数据。
 - `星海知枢/theme.css`：深色星海、浅色星雾与原生界面样式。
 - `星海知枢/assets/`：CSS 直接引用的深浅星空背景图。
-- `release/`：跨 macOS 与 Windows 使用的纯主题 ZIP。
+- `xinghai-workbench/`：工作台插件 1.2.6 的清单、JavaScript、样式和运行资源。
+- `release/`：跨 macOS 与 Windows 使用的主题与工作台整合 ZIP。
 
 ## 产品边界
 
-- 不包含社区插件、`main.js`、工作台或工作区预设。
-- 不提供任务、项目、专注、日历、时间线或数据写回功能。
-- 不读取、修改或上传用户 Markdown 笔记。
+- 主题只负责全局外观；工作台功能由 `xinghai-workbench` 插件提供。
+- 插件提供任务、项目、专注、日历、时间线、关联信息和 Markdown 写回。
+- 插件只在本地读取知识库；用户执行创建或修改操作时才写入 Markdown，不上传内容。
 - 不依赖任何第三方社区插件。
+- 不分发用户运行配置 `data.json`、测试库或归档数据。
 
 ## 外观要求
 
@@ -23,6 +25,6 @@
 
 ## 发布要求
 
-- 用户安装包必须严格符合 8 文件白名单。
+- 用户安装包必须严格符合 19 文件白名单：4 个文档、4 个主题文件和 11 个插件文件。
 - macOS 与 Windows 共用同一 ZIP。
-- README、INSTALL、DOCX、主题清单和实际文件必须一致。
+- README、INSTALL、DOCX、主题/插件清单和实际文件必须一致。
